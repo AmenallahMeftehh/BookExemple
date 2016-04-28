@@ -1,0 +1,22 @@
+body{
+  background: #ecf0f1;
+}
+
+.homeImageStyle{
+  width: 12em;
+}
+
+
+.form-horizontal , .form-signin, .form-add-book{
+    width:  31.25em;
+    margin: 0 auto;
+}
+
+.navMenu{
+  margin-right:0.625em
+}
+
+.coverStyle{
+  width: 18em;
+  margin-top: 2em;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <title>Books Store</title>
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="/public/assets/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="/public/assets/css/style.css" />
+
+  <body>
+    <div class="container">
+      <!-- debut row qui contient le menu  -->
+      <div class="row">
+        <div class="col-md-12">
+          <nav class="navbar navbar-inverse">
+            <div class="navbar-brand"><a href="#/">Book Store</a></div>
+            <ul class="nav navbar-nav">
+              <li><a href="#/show">Books list</a></li>
+              <li><a href="#/add">Add new book</a></li>
+              <li><a href="#/cart/show">Cart</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right navMenu">
+              <li><a href="#/login/signin">Sign in</a></li>
+              <li><a href="#/login/signup">Sign up</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <!-- fin row menu -->
+      <!-- debut row ng-view -->
+      <div class="row">
+        <div class="col-md-12">
+          <div ng-view>
+          </div>
+        </div>
+      </div>
+      <!-- fin row ng-view -->
+    </div>
+
+
+
+    <!-- script & libs   -->
+    <!-- angular -->
+    <script src="/public/assets/js/angular.js"></script>
+    <script src="/public/assets/js/angular-route.js"></script>
+    <script src="/public/assets/js/angular-resource.js"></script>
+    <script src="/public/assets/js/ui-bootstrap-tpl.js"></script>
+    <!-- app -->
+    <script src="/public/src/index.js"></script>
+  
+    <!-- controllers -->
+    <script src="/public/src/controllers/bookIndexController.js"></script>
+    <script src="/public/src/controllers/bookAddController.js"></script>
+    <script src="/public/src/controllers/bookDetailsController.js"></script>
+    <script src="/public/src/controllers/bookEditController.js"></script>
+
+
+
+  </body>
+</html>

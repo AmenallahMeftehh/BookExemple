@@ -31,6 +31,27 @@ var routes = function(Book){
           else
             res.json(books)
         });
+      })
+      .put(function(req, res){
+          req.book.title = req.body.title;
+          req.book.author = req.body.author;
+          req.book.genre = req.body.genre;
+          req.book.read = req.body.read;
+          req.book.save(function(err){
+            if(err)
+              res.status(500).send(err);
+            else{
+                res.json(req.book);
+              }
+          });
+      })
+      .delete(function(req, res){
+        req.book.remove(function(err){
+          if(err)
+            res.status(500).send(err);
+          else
+            res.status(204).send('Removed');
+        });
       });
 return bookRouter;
 
