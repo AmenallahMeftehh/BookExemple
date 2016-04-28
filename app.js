@@ -20,9 +20,10 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 
 
-app.use('/api',bookRouter);
-app.get('/',function(req,res){
-  res.send('welcome to my API');
+app.use('/api/books',bookRouter);
+app.use(express.static(__dirname));
+app.get('/', function(req, res){
+	res.sendFile(__dirname+'/index.html');
 });
 app.listen(port, function(){
 	console.log("gulp is running Server on port "+port);

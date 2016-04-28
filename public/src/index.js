@@ -1,26 +1,27 @@
-var app = angular.module('app',['ngRoute', 'ui.bootstrap']).
-config(['$routeProvider', function($routeProvider){
+var app = angular.module('app',['ngRoute', 'ui.bootstrap']);
+
+app.config(['$routeProvider', function($routeProvider){
   $routeProvider
     //routes for home
     .when('/home',{
-      templateUrl: 'templates/home.html'
-      // controller: 'bookIndexController'
+      templateUrl: 'public/src/templates/home.html'
+
     })
     //routes for books
     .when('/show',{
-      templateUrl: 'templates/books/show.html',
-      controller: 'BooksController'
+      templateUrl: 'public/src/templates/show.html',
+      controller: 'bookIndexController'
     })
     .when('/add',{
-      templateUrl: 'templates/books/add.html',
+      templateUrl: 'public/src/templates/add.html',
       controller: 'addBookController'
     })
     .when('/details/:id',{
-      templateUrl: 'templates/books/details.html',
-      controller: 'removeBookController'
+      templateUrl: 'public/src/templates/details.html',
+      controller: 'detailBookController'
     })
     .when('/edit/:id',{
-      templateUrl: 'templates/books/edit.html',
+      templateUrl: 'public/src/templates/edit.html',
       controller: 'bookEditController'
     })
 

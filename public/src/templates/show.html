@@ -1,0 +1,35 @@
+<div class="container">
+  <h1>{{viewName}}</h1>
+  <input type="text" class="form-control" placeholder="Search book" ng-model="searchBook" style="width: 30%; margin-bottom: 10px">
+  <!-- <pagination total-items="{{books.length}}" page="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages"></pagination> -->
+  <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="text" id="title" placeholder="Book title" class="form-control" ng-model="book.title"></td>
+            <td><input type="text" id="title" placeholder="Book author" class="form-control" ng-model="book.author"></td>
+            <td><input type="text" id="title" placeholder="Book genre" class="form-control" ng-model="book.genre"></td>
+            <td><button placeholder="Book add" class="form-control" ng-click="addBook()">Add book</button></td>
+          </tr>
+          <tr ng-repeat="book in books | filter:searchBook | limitTo:maxSize:(currentPage - 1) * maxSize">
+            <td>{{book.title}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.genre}}</td>
+            <td>
+              <a href="#/details/{{book._id}}" class="btn btn-primary" ><span class="glyphicon glyphicon-zoom-in"></span></a>
+
+              <a href="#/edit/{{book._id}}" class="btn btn-warning" ng-click="editBook(book._id)">Edit</a>
+              <button class="btn btn-danger" ng-click="deleteBook(book._id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <uib-pagination total-items="books.length" ng-model="currentPage" items-per-page="maxSize" ng-change="pageChanged()"></uib-pagination>
+</div>

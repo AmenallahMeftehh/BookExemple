@@ -1,10 +1,19 @@
-app.controller('removeBookController',['$scope', '$http',function($scope,$http){
+app.controller('detailBookController',['$scope', '$http','$routeParams',function($scope,$http,$routeParams){
 
-  // fonction ajouter un livre
-  $scope.remove = function (id) {
+
+  $scope.recup = function (id) {
       console.log(id);
-      $http.delete('/Books/' + id).success(function (response) {
+      $scope.book.id =$routeParams.itemId;
+      $http.get('/api/books/' + id).success(function (response) {
 
+        console.log(response);
+
+      });
+    };
+  // fonction ajouter un livre
+  $scope.deleteBook = function (id) {
+      console.log($routeParams.id);
+      $http.delete('/api/books/' +id).success(function (response) {
       })
   };
 
