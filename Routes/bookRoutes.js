@@ -22,7 +22,7 @@ var routes = function(Book){
     });
   //definir un middleware pour ne pas répéter
   // Book.findById
-  bookRouter.get('/:bookId', function(req,res,next){
+  bookRouter.use('/:bookId', function(req,res,next){
       Book.findById(req.params.bookId, function(err,book){
         console.log(req.params.bookId);
 
@@ -42,24 +42,31 @@ var routes = function(Book){
   });
 
   //definir le book router pour recuperer un seule livre à partir de la liste des livres
-  bookRouter.route('/:bookId')
+  bookRouter.route('/:id')
     .get(function(req, res){
         res.json(req.book);
     })
     .put(function(req, res){
-        req.book.title = req.body.title;
-        req.book.author = req.body.author;
-        req.book.genre = req.body.genre;
-        req.book.read = req.body.read;
-        req.book.cover = req.body.cover;
-        req.book.save(function(err){
-          if(err)
-            res.status(500).send(err);
-          else{
-              res.json(req.book);
+        Book.id=req.params.id;
+          Book.findOneAndUpdate({_id:Book.id}
+            ,{
+
+                $set: {
+                    title: req.body.title
+                    , author: req.body.author
+                    , genre: req.body.genre
+                    , read: req.body.read
+
             }
-        });
-    })
+
+        },    function(err){
+            if(err)
+              res.status(500).send(err);
+            else{
+                res.json(req.book);
+              }
+          });
+      })
     .patch(function(req, res){
         if(req.body._id)
           delete req.body._id;
@@ -77,8 +84,9 @@ var routes = function(Book){
     })
 
     .delete(function(req, res){
-      console.log(req.book);
-      book.remove(function(err){
+      Book.id=req.params.id;
+      console.log(req.Book);
+      Book.findOneAndRemove({_id:Book.id},function(err){
         if(err)
           res.status(500).send(err);
         else

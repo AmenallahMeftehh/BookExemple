@@ -12,19 +12,10 @@ app.config(['$routeProvider', function($routeProvider){
       templateUrl: 'public/src/templates/show.html',
       controller: 'bookIndexController'
     })
-    .when('/add',{
-      templateUrl: 'public/src/templates/add.html',
-      controller: 'addBookController'
+    .when('/docum',{
+      templateUrl:'public/src/templates/docum.html',
+      controller:'documIndexController'
     })
-    .when('/details/:id',{
-      templateUrl: 'public/src/templates/details.html',
-      controller: 'detailBookController'
-    })
-    .when('/edit/:id',{
-      templateUrl: 'public/src/templates/edit.html',
-      controller: 'bookEditController'
-    })
-
     //routes for sign in , sign up
     // .when('/login/signin',{
     //   templateUrl: '/app/src/templates/login/signin.html',

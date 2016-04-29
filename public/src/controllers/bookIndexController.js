@@ -1,13 +1,13 @@
 app.controller('bookIndexController', ['$scope', '$http', function($scope, $http){
 
 
-  var refresh = function () {
+  var getAll = function () {
       $http.get('/api/books').success(function (response) {
           $scope.books = response;
           console.log('i received the data i requested');
       });
   };
-  refresh();
+  getAll();
   $scope.maxSize = 5;
   $scope.currentPage = 1;
   $scope.totalItems = 0;
@@ -24,25 +24,24 @@ app.controller('bookIndexController', ['$scope', '$http', function($scope, $http
         console.log($scope.book);
         $http.post('/api/books', $scope.book).success(function (response) {
             console.log(response);
-            refresh();
+            getAll();
           $scope.book.title="";
           $scope.book.author="";
           $scope.book.genre="";
 
         });
     };
-    // fonction ajouter un livre
     $scope.deleteBook = function (id) {
         console.log(id);
         $http.delete('/api/books/' +id).success(function (response) {
-          refresh();
+          getAll();
         })
     };
     // fonction pour mettre a jour un livre
-    $scope.update = function () {
+    $scope.update = function (book) {
         console.log($scope.book._id);
         $http.put('/api/books/' + $scope.book._id, $scope.book).success(function (response) {
-            refresh();
+            getAll();
             $scope.book = "";
 
         });
