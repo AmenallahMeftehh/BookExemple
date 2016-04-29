@@ -8,19 +8,20 @@ var  bodyParser = require('body-parser');
 var db = mongoose.connect('mongodb://localhost/bookAPIUP');
 // Appel au model book
 var Book = require ('./models/bookModel');
+var Docum = require('./models/documModel');
 // instantiation d'express
 var app = express();
 // declaration de port
 var port = process.env.PORT || 3000;
 // routage avec express
 bookRouter = require('./Routes/bookRoutes')(Book);
+documRouter = require('./Routes/documRoutes')(Docum);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
-
-
 app.use('/api/books',bookRouter);
+app.use('/api/docums',documRouter);
 app.use(express.static(__dirname));
 app.get('/', function(req, res){
 	res.sendFile(__dirname+'/index.html');

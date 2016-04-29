@@ -1,0 +1,38 @@
+<div class="container">
+  <h1>{{viewName}}</h1>
+  <input type="text" class="form-control" placeholder="Search documentary" ng-model="searchDocum" style="width: 30%; margin-bottom: 10px">
+  <!-- <pagination total-items="{{books.length}}" page="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages"></pagination> -->
+  <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Pays</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="text" id="title" placeholder="Docum title" class="form-control" ng-model="docum.title"></td>
+            <td><input type="text" id="title" placeholder="Docum description" class="form-control" ng-model="docum.description"></td>
+            <td><input type="text" id="title" placeholder="Docum pays" class="form-control" ng-model="docum.pays"></td>
+            <td><input type="text" id="title" placeholder="Docum date d'emission" class="form-control" ng-model="docum.date"></td>
+            <td><button class="btn btn-info" ng-click="addDocum()"><span class="glyphicon glyphicon-plus-sign"></button>
+          <button  class="btn btn-success" ng-click="update(docum)"><span class="glyphicon glyphicon-ok-circle"></span></button> </td>
+          </tr>
+          <tr ng-repeat="docum in docums | filter:searchDocum | limitTo:maxSize:(currentPage - 1) * maxSize">
+            <td>{{docum.title}}</td>
+            <td>{{docum.description}}</td>
+            <td>{{docum.pays}}</td>
+            <td>{{docum.date}}</td>
+            <td>
+              <a href="#/details/{{book._id}}" class="btn btn-primary" ><span class="glyphicon glyphicon-zoom-in"></span></a>
+              <button class="btn btn-warning" ng-click="recup(docum._id)"><span class="glyphicon glyphicon-pencil"></span></button>
+              <button class="btn btn-danger" ng-click="deleteDocum(docum._id)"><span class="glyphicon glyphicon-remove-sign"></span></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <uib-pagination total-items="docums.length" ng-model="currentPage" items-per-page="maxSize" ng-change="pageChanged()"></uib-pagination>
+</div>
