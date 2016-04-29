@@ -7,6 +7,14 @@ app.config(['$routeProvider', function($routeProvider){
       templateUrl: 'public/src/templates/home.html'
 
     })
+    .when('/login',{
+      templateUrl: 'public/src/templates/login.html',
+      controller:'LoginCtrl'
+    })
+    .when('/register',{
+      templateUrl: 'public/src/templates/register.html',
+      controller:'RegisterCtrl'
+    })
     //routes for books
     .when('/show',{
       templateUrl: 'public/src/templates/show.html',
@@ -26,5 +34,5 @@ app.config(['$routeProvider', function($routeProvider){
     //   controller: 'signUpController'
     // })
     //the case when the url don't have a rule
-    .otherwise({redirectTo: '/home'});
+    .otherwise({redirectTo: '/login'});
 }]);

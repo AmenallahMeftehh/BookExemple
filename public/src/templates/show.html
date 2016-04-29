@@ -16,8 +16,8 @@
             <td><input type="text" id="title" placeholder="Book title" class="form-control" ng-model="book.title"></td>
             <td><input type="text" id="title" placeholder="Book author" class="form-control" ng-model="book.author"></td>
             <td><input type="text" id="title" placeholder="Book genre" class="form-control" ng-model="book.genre"></td>
-            <td><button placeholder="Book add" class="form-control" ng-click="addBook()">Add book</button>
-              <button placeholder="Book add" class="form-control" ng-click="update(book)">update book</button>
+            <td><button placeholder="Book add" class="btn btn-success" ng-click="addBook()"><span class="glyphicon glyphicon-plus-sign"></button>
+              <button placeholder="Book add" class="btn btn-info" ng-click="update(book)"><span class="glyphicon glyphicon-ok-circle"></span></button>
             </td>
           </tr>
           <tr ng-repeat="book in books | filter:searchBook | limitTo:maxSize:(currentPage - 1) * maxSize">
@@ -26,8 +26,8 @@
             <td>{{book.genre}}</td>
             <td>
               <a href="#/details/{{book._id}}" class="btn btn-primary" ><span class="glyphicon glyphicon-zoom-in"></span></a>
-              <button class="btn btn-warning" ng-click="recup(book._id)">Edit</button>
-              <button class="btn btn-danger" ng-click="deleteBook(book._id)">Delete</button>
+              <button class="btn btn-warning" ng-click="recup(book._id)"><span class="glyphicon glyphicon-pencil"></span></button>
+              <button class="btn btn-danger" ng-click="deleteBook(book._id)"><span class="glyphicon glyphicon-remove-sign"></span></button>
             </td>
           </tr>
         </tbody>

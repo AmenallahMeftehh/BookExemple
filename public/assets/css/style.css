@@ -5,7 +5,10 @@ body{
 .homeImageStyle{
   width: 12em;
 }
-
+.home{
+width: 100%;
+max-height: 520px;
+}
 
 .form-horizontal , .form-signin, .form-add-book{
     width:  31.25em;
