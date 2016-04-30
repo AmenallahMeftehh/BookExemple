@@ -5,6 +5,7 @@
   <!-- CSS -->
   <link rel="stylesheet" type="text/css" href="/public/assets/css/bootstrap.css" />
   <link rel="stylesheet" type="text/css" href="/public/assets/css/style.css" />
+  <!-- Style --> <link rel="stylesheet" href="/public/assets/css/styleauth.css" type="text/css" media="all" />
 
   <body>
 
@@ -12,18 +13,18 @@
       <!-- debut row qui contient le menu  -->
 
       <header>
-          <nav class="cf" ng-include="'public/src/templates/nav.html'"></nav>
+          <nav  ng-include="'public/src/templates/nav.html'"></nav>
       </header>
 
 
       <!-- fin row menu -->
       <!-- debut row ng-view -->
-      <div class="row">
-        <div class="col-md-12">
+
+
           <div ng-view>
-          </div>
+
         </div>
-      </div>
+
       <!-- fin row ng-view -->
     </div>
 

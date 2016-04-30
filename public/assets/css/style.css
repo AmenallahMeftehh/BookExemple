@@ -5,14 +5,34 @@ body{
 .homeImageStyle{
   width: 12em;
 }
+.navfont{
+	font-size: 22px;
+	color:white !important;
+	font-weight: bold;
+	font-family: sans-serif;
+  background-color: transparent;
+}
 .home{
 width: 100%;
 max-height: 520px;
 }
-
+.fb{
+  margin:1em;
+  background-color:transparent;
+border: none;
+}
 .form-horizontal , .form-signin, .form-add-book{
     width:  31.25em;
     margin: 0 auto;
+}
+.btn1{
+  height:40px;
+  width: 130px;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 4px;
+  background-color: transparent;
+  color: white;
 }
 span{
   float: right;

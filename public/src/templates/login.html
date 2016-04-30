@@ -1,22 +1,28 @@
-<section class="card login">
-    <form name="myform" ng-submit="login()" novalidate>
-        <div class="textintro">
-            <h1>Welcome Here!!</h1>
-            <p>Please Log-In</p>
+
+      <h1>APPLICATION</h1>
+      	<div class="signin ">
+            <form name="myform" ng-submit="login()" novalidate>
             <h2 class="error validationerror">{{errorMessage}}</h2>
+
+
+
+
+            <input type="text"  class="user" name="username" placeholder="User Name" ng-model="loginForm.username" ng-required="true"onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'rachelgreen';}" />
+            <p class="error validationerror" style='color:red;'ng-show="myform.username.$invalid && myform.username.$touched"> Please enter a valid UserName</p>
+
+            <input type="password" class="pass" name="password" placeholder="Password" ng-model="loginForm.password" ng-required="true"onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" />
+            <p class="error validationerror" style='color:red;'ng-show="myform.password.$invalid && myform.password.$touched">Password Required</p>
+
+        <label>
+        <input type="checkbox" value="Remember-Me" /> Remember Me?
+      </label><br>
+      <div style="text-align:center">
+
+<br>
+        <button type="submit" class="btn1 btn btn-default" ng-click="login()">LOGIN</button>
+          <a href="#home"></a>
+        <button type="submit" class="btn1 btn btn-default" ng-disabled="disabled"><span><img src="public\assets\images\social (2).png" alt="" />&nbsp FACEBOOK</span></button>
+          <a href="#home"></a>
+            </div>
+          </form>
         </div>
-
-        <fieldset>
-            <input type="text" name="username" placeholder="User Name" ng-model="loginForm.username" ng-required="true"/>
-            <p class="error validationerror" ng-show="myform.username.$invalid && myform.username.$touched"> Please enter a valid UserName</p>
-
-            <input type="password" name="password" placeholder="Password" ng-model="loginForm.password" ng-required="true"/>
-            <p class="error validationerror" ng-show="myform.password.$invalid && myform.password.$touched">Password Required</p>
-        </fieldset>
-
-        <button type="submit" class="btn" ng-disabled="myform.$invalid">Login</button>
-        
-        <button  style="margin:1em;"class="btn btn-primary" ng-click="FBLogin()">Se connecter avec facebook</button>
-
-    </form>
-</section>

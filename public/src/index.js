@@ -52,16 +52,17 @@ window.fbAsyncInit = function() {
      js.src = "//connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
-// app.run(function ($rootScope, $location, $route, AuthService) {
-//     $rootScope.$on('$routeChangeStart',
-//         function (event, next, current) {
-//             AuthService.getUserStatus()
-//                 .then(function(){
-//                     if (next.access.restricted && !AuthService.isLoggedIn()){
-//                         $location.path('/login');
-//                         $route.reload();
-//                     }
-//
-//                 });
-//         });
-// });
+
+
+   app.run(function ($rootScope, $location, $route, AuthService) {
+     $rootScope.$on('$routeChangeStart',
+         function (event, next, current) {
+             AuthService.getUserStatus()
+                 .then(function(){
+                     if (next.access.restricted && !AuthService.isLoggedIn()){
+                         $location.path('/login');
+                         $route.reload();
+                     }
+                 });
+         });
+ });

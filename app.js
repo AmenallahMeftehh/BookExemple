@@ -22,7 +22,7 @@ var Docum = require('./models/documModel');
 // instantiation d'express
 var app = express();
 // declaration de port
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 8000;
 // routage avec express
 //requiring Routes
  routes = require('./Routes/userRoutes.js');
@@ -49,6 +49,17 @@ app.use(express.static(__dirname));
 app.get('/', function(req, res){
 	res.sendFile(__dirname+'/index.html');
 });
+
+var http = require('http');
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hello World\n');
+}).listen(process.env.PORT || 8000, '127.0.0.1');
+console.log('Server currently listening...');
+
+
+
+
 app.listen(port, function(){
 	console.log("gulp is running Server on port "+port);
 });
