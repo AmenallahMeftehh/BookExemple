@@ -4,6 +4,27 @@ app.controller('LoginCtrl',
     ['$scope', '$location', 'AuthService','$rootScope',
         function ($scope, $location, AuthService,$rootScope) {
 
+          $scope.FBLogin=function(){
+            FB.login(function(response) {
+              if (response.authResponse) {
+                console.log('Welcome!  Fetching your information.... ');
+                FB.api('/me', function(response) {
+                  console.log('Good to see you, ' + response.name + '.');
+                  console.log(response);
+                });
+              } else {
+                console.log('User cancelled login or did not fully authorize.');
+              }
+}
+, {
+    scope: 'publish_actions',
+    return_scopes: true
+});
+
+
+
+          }
+
             $scope.login = function () {
 
                 // initial values
